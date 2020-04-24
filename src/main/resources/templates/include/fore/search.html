@@ -1,0 +1,24 @@
+<!--
+每个页面都包含了搜索的 html，首页和搜索结果页包含的是search.html，其他页面包含的是simpleSearch.html。
+这两个页面都通过ajax，提交数据keyword到foresearch这个路径。
+而 formsearch 在 ForePageController 中，又跳转到了 fore/searchResult.html 这个页面。
+-->
+
+<div class th:fragment="html">
+    <a th:href="${#httpServletRequest.getContextPath()}">
+        <img id="logo" src="img/site/logo.gif" class="logo">
+    </a>
+    <form action="search" method="get" >
+        <div class="searchDiv">
+            <input name="keyword" type="text" placeholder="时尚男鞋  太阳镜 ">
+            <button  type="submit" class="searchButton">搜索</button>
+            <div class="searchBelow">
+				<span th:each="c,status: ${application.categories_below_search}" th:if="${status.index>=5 && status.index<=8}">
+					<a th:href="@{'category?cid='+${c.id}}" th:text="${c.name}" ></a>
+					<span th:if="${status.index!=8}">|</span>
+	            </span>
+
+            </div>
+        </div>
+    </form>
+</div>
