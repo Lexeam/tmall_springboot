@@ -13,7 +13,7 @@ public class AdminPageController {
 
     @GetMapping(value = "/admin")
     public String admin(){
-        return "redirect:admin_category_list";
+        System.out.println("访问后台页面了！");return "redirect:admin_category_list";
     }
 
     @GetMapping(value = "/admin_category_list")
